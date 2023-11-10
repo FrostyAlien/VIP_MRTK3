@@ -130,8 +130,8 @@ def main():
     # plt.subplot(2, 1, 1)
     f1 = plt.figure()
     ax = f1.add_subplot(projection='3d')
-    plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan")
-    plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="orange")
+    plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=1.5)
+    plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="orange", linewidth=1.5)
 
     # draw the mapping curve
     for id in user_mapping:
@@ -148,13 +148,13 @@ def main():
             plt.plot([mapping["user"][0], mapping["target"][0]],
                      [mapping["user"][1], mapping["target"][1]],
                      [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=0.5, color="red", alpha=0.5, label="_"+str(id))
+                     linestyle="-", linewidth=0.5, color="red", alpha=0.2, label="_"+str(id))
 
         for mapping in outer:
             plt.plot([mapping["user"][0], mapping["target"][0]],
                      [mapping["user"][1], mapping["target"][1]],
                      [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=0.5, color="blue", alpha=0.5, label="_"+str(id))
+                     linestyle="-", linewidth=0.5, color="blue", alpha=0.2, label="_"+str(id))
 
     plt.xlabel("x")
     plt.ylabel("y")
@@ -164,7 +164,7 @@ def main():
     ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),
               ncol=2, borderaxespad=0)
     f1.subplots_adjust(right=0.55)
-    f1.suptitle('Right-click to hide all\nMiddle-click to show all',
+    f1.suptitle('Right-click to hide all\nMiddle-click to show all\nPress r to toggle inner\nPress b to toggle outer',
                 va='top', size='large')
 
     leg = interactive_legend()
@@ -185,6 +185,7 @@ class InteractiveLegend(object):
     def __init__(self, legend):
         self.legend = legend
         self.fig = legend.axes.figure
+        self.color_visibility = {'red': True, 'blue': True}
 
         self.lookup_artist, self.lookup_handle = self._build_lookups(legend)
         self._setup_connections()
@@ -196,6 +197,8 @@ class InteractiveLegend(object):
             artist.set_picker(10)  # 10 points tolerance
 
         self.fig.canvas.mpl_connect('pick_event', self.on_pick)
+        self.fig.canvas.mpl_connect('button_press_event', self.on_click)
+        # Connect additional click events for hiding and showing all plots
         self.fig.canvas.mpl_connect('button_press_event', self.on_click)
 
     def _build_lookups(self, legend):
@@ -228,36 +231,58 @@ class InteractiveLegend(object):
         handle = event.artist
         if handle in self.lookup_artist:
             # Toggle visibility of all associated artists with this legend item
+            new_visibility = not self.lookup_artist[handle][0].get_visible()
             for artist in self.lookup_artist[handle]:
-                artist.set_visible(not artist.get_visible())
+                artist.set_visible(new_visibility)
+                # Update visibility based on color filters as well
+                if hasattr(artist, 'get_color'):
+                    artist_color = artist.get_color()
+                    artist.set_visible(new_visibility and self.color_visibility.get(artist_color, True))
             self.update()
 
     def on_click(self, event):
-        if event.button == 3:
-            visible = False
-        elif event.button == 2:
-            visible = True
-        else:
-            return
-
-        for artist in self.lookup_artist.values():
-            artist.set_visible(visible)
-        self.update()
+        if event.button == 3:  # Right-click to hide all
+            for artist in self.lookup_handle.keys():
+                artist.set_visible(False)
+            for color in self.color_visibility:
+                self.color_visibility[color] = False
+            self.update()
+        elif event.button == 2:  # Middle-click to show all
+            for artist in self.lookup_handle.keys():
+                artist.set_visible(True)
+            for color in self.color_visibility:
+                self.color_visibility[color] = True
+            self.update()
 
     def update(self):
+        # Update legend handle visibility based on associated artists
         for handle, artists in self.lookup_artist.items():
             visible = any(artist.get_visible() for artist in artists)
-            handle.set_visible(visible)  # Update legend handle visibility based on associated artists
-            for artist in artists:
-                # Update the visibility of corresponding '_name' artists
-                if hasattr(artist, 'get_label') and artist.get_label().startswith('_'):
-                    # Find all artists that have a matching '_name' and toggle their visibility
-                    name_to_match = artist.get_label()[1:]
-                    for other_artist in self.legend.axes.get_children():
-                        if isinstance(other_artist, plt.Line2D) and other_artist.get_label() == name_to_match:
-                            other_artist.set_visible(visible)
+            handle.set_visible(visible)
+
+        # Update artist visibility based on both their individual setting and color filter
+        for artist in self.lookup_handle.keys():
+            if hasattr(artist, 'get_color'):
+                artist_color = artist.get_color()
+                if artist_color in self.color_visibility:
+                    # Apply individual and color visibility
+                    artist.set_visible(artist.get_visible() and self.color_visibility[artist_color])
 
         self.fig.canvas.draw()
+
+
+    def toggle_color(self, color):
+        # Flip the visibility state for the specified color
+        self.color_visibility[color] = not self.color_visibility[color]
+
+        for artist in self.lookup_handle.keys():
+            if hasattr(artist, 'get_color'):
+                artist_color = artist.get_color()
+                if artist_color == color:
+                    # Set visibility based on the new color filter state
+                    artist.set_visible(self.color_visibility[color])
+
+        self.update()
 
     def show(self):
         plt.show()
@@ -268,6 +293,18 @@ if __name__ == "__main__":
 
     # plt.savefig("curve.png", dpi=600, bbox_inches='tight')
     fig, ax, leg = main()
+
+    # Create a switch function for each color
+    def switch_red():
+        leg.toggle_color('red')
+
+    def switch_blue():
+        leg.toggle_color('blue')
+
+    # Connect the switch functions to key presses
+    plt.connect('key_press_event', lambda event: switch_red() if event.key == 'r' else None)
+    plt.connect('key_press_event', lambda event: switch_blue() if event.key == 'b' else None)
+
     plt.show()
 
     # draw the distribution of the distance
