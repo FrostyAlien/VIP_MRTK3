@@ -136,8 +136,8 @@ def main():
     # draw the mapping curve
     for id in user_mapping:
 
-        if id != 0:
-            continue
+        # if id != 0:
+        #     continue
 
         plt.plot(user_mapping[id]["user"][0], user_mapping[id]["user"][1], user_mapping[id]["user"][2], label=id)
 
@@ -148,13 +148,13 @@ def main():
             plt.plot([mapping["user"][0], mapping["target"][0]],
                      [mapping["user"][1], mapping["target"][1]],
                      [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=0.5, color="red", alpha=0.5)
+                     linestyle="-", linewidth=0.5, color="red", alpha=0.5, label="_"+str(id))
 
         for mapping in outer:
             plt.plot([mapping["user"][0], mapping["target"][0]],
                      [mapping["user"][1], mapping["target"][1]],
                      [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=0.5, color="blue", alpha=0.5)
+                     linestyle="-", linewidth=0.5, color="blue", alpha=0.5, label="_"+str(id))
 
     plt.xlabel("x")
     plt.ylabel("y")
@@ -207,22 +207,29 @@ class InteractiveLegend(object):
         lookup_artist = {}
         lookup_handle = {}
         for artist in legend.axes.get_children():
-            if artist.get_label() in labels:
-                handle = label2handle[artist.get_label()]
-                lookup_handle[artist] = handle
-                lookup_artist[handle] = artist
-                lookup_artist[handle2text[handle]] = artist
-
-        lookup_handle.update(zip(handles, handles))
-        lookup_handle.update(zip(legend.texts, handles))
+            if isinstance(artist, plt.Line2D):  # We're only interested in line artists here
+                label = artist.get_label()
+                if label in labels:
+                    handle = label2handle[label]
+                    lookup_artist[handle] = [artist]
+                    lookup_handle[artist] = handle
+                elif label.startswith('_') and label[1:] in labels:
+                    # This artist corresponds to a main plot line, store it as well
+                    main_label = label[1:]
+                    main_handle = label2handle[main_label]
+                    if main_handle not in lookup_artist:
+                        lookup_artist[main_handle] = []
+                    lookup_artist[main_handle].append(artist)
+                    lookup_handle[artist] = main_handle
 
         return lookup_artist, lookup_handle
 
     def on_pick(self, event):
         handle = event.artist
         if handle in self.lookup_artist:
-            artist = self.lookup_artist[handle]
-            artist.set_visible(not artist.get_visible())
+            # Toggle visibility of all associated artists with this legend item
+            for artist in self.lookup_artist[handle]:
+                artist.set_visible(not artist.get_visible())
             self.update()
 
     def on_click(self, event):
@@ -238,12 +245,18 @@ class InteractiveLegend(object):
         self.update()
 
     def update(self):
-        for artist in self.lookup_artist.values():
-            handle = self.lookup_handle[artist]
-            if artist.get_visible():
-                handle.set_visible(True)
-            else:
-                handle.set_visible(False)
+        for handle, artists in self.lookup_artist.items():
+            visible = any(artist.get_visible() for artist in artists)
+            handle.set_visible(visible)  # Update legend handle visibility based on associated artists
+            for artist in artists:
+                # Update the visibility of corresponding '_name' artists
+                if hasattr(artist, 'get_label') and artist.get_label().startswith('_'):
+                    # Find all artists that have a matching '_name' and toggle their visibility
+                    name_to_match = artist.get_label()[1:]
+                    for other_artist in self.legend.axes.get_children():
+                        if isinstance(other_artist, plt.Line2D) and other_artist.get_label() == name_to_match:
+                            other_artist.set_visible(visible)
+
         self.fig.canvas.draw()
 
     def show(self):
