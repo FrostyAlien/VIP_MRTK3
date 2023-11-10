@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 # Euclidean distance (2d)
 def euclidean_distance(target_x: float, target_y: float, target_z: float,
                        user_x: float, user_y: float, user_z: float) -> float:
-    return np.sqrt((target_x - user_x) ** 2 + (target_y - user_y) ** 2)
+    return np.sqrt((target_x - user_x) ** 2 + (target_y - user_y) ** 2 + (target_z - user_z) ** 2)
 
 
 def data_loader() -> (list, list, list, list):
