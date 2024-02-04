@@ -1,2 +1,4 @@
+P03_MR_TrackedLeftController_LeftHand_RightController_6.json filter=lfs diff=lfs merge=lfs -text
+P06_MR_TrackedLeftController_LeftHand_RightHand_6.json filter=lfs diff=lfs merge=lfs -text
 *_6.json filter=lfs diff=lfs merge=lfs -text
 *_5.json filter=lfs diff=lfs merge=lfs -text
