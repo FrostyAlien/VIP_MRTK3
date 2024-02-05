@@ -12,12 +12,12 @@ def euclidean_distance(target_x: float, target_y: float, target_z: float,
 
 
 def data_loader() -> (list, list, list, list):
-    with open("data/Zhuang_TrackedLeftController_LeftHand_RightController_Target_Inner.json", "r") as f:
-        target_inner = json.load(f)["m_Positions"]
+    with open("data/Target_Inner.json", "r") as f:
+        target_inner = json.load(f)
     f.close()
 
-    with open("data/Zhuang_TrackedLeftController_LeftHand_RightController_Target_Outer.json", "r") as f:
-        target_outer = json.load(f)["m_Positions"]
+    with open("data/Target_Outer.json", "r") as f:
+        target_outer = json.load(f)
     f.close()
 
     target_inner_x = list()
@@ -84,6 +84,72 @@ def cal_curve_mapping(user_data, target):
     return mapping, np.mean(distance_list), np.median(distance_list)
 
 
+# def draw_curve(user_mapping):
+#     target_inner_x = list()
+#     target_inner_y = list()
+#     target_inner_z = list()
+#
+#     target_outer_x = list()
+#     target_outer_y = list()
+#     target_outer_z = list()
+#
+#     for item in user_mapping["inner"][0]["mapping"]:
+#         target_inner_x.append(item["target"]["x"])
+#         target_inner_y.append(item["target"]["y"])
+#         target_inner_z.append(item["target"]["z"])
+#
+#     for item in user_mapping["outer"][0]["mapping"]:
+#         target_outer_x.append(item["target"]["x"])
+#         target_outer_y.append(item["target"]["y"])
+#         target_outer_z.append(item["target"]["z"])
+#
+#     f1 = plt.figure()
+#     ax = f1.add_subplot(projection='3d')
+#     plt.plot(target_inner_x, target_inner_y, target_inner_z, label="target_inner", color="cyan", linewidth=1.5)
+#     plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="orange", linewidth=1.5)
+#
+#     for type in user_mapping.values():
+#         user_curve_x = list()
+#         user_curve_y = list()
+#         user_curve_z = list()
+#
+#         print(type)
+#
+#         for item in type[0]["mapping"]["user"]:
+#             user_curve_x.append(item["x"])
+#             user_curve_y.append(item["y"])
+#             user_curve_z.append(item["z"])
+#
+#         plt.plot(user_curve_x, user_curve_y, user_curve_z)
+#
+#         for item in type["inner"][0]["mapping"]:
+#             plt.plot([item["user"]["x"], item["target"]["x"]],
+#                      [item["user"]["y"], item["target"]["y"]],
+#                      [item["user"]["z"], item["target"]["z"]],
+#                      linestyle="-", linewidth=0.5, color="red", alpha=0.2, label="_" + str(i))
+#
+#         for item in type["outer"][0]["mapping"]:
+#             plt.plot([item["user"]["x"], item["target"]["x"]],
+#                      [item["user"]["y"], item["target"]["y"]],
+#                      [item["user"]["z"], item["target"]["z"]],
+#                      linestyle="-", linewidth=0.5, color="blue", alpha=0.2, label="_" + str(i))
+#
+#     plt.xlabel("x")
+#     plt.ylabel("y")
+#     # plt.zlabel("z")
+#     # plt.legend()
+#
+#     ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),
+#               ncol=2, borderaxespad=0)
+#     f1.subplots_adjust(right=0.55)
+#     f1.suptitle('Right-click to hide all\nMiddle-click to show all\nPress r to toggle inner\nPress b to toggle outer',
+#                 va='top', size='large')
+#
+#     leg = interactive_legend()
+#
+#     return f1, ax, leg
+
+
 def main():
     target_x, target_y, target_z, \
         target_outer_x, target_outer_y, target_outer_z, = data_loader()
@@ -95,7 +161,7 @@ def main():
     # print("target_z: ", len(target_z))
     # print("user_z: ", len(user_z))
 
-    with open("data/Zhuang_TrackedLeftController_LeftHand_RightController.json", "r") as f:
+    with open("data/Data_Inner.json", "r") as f:
         user = json.load(f)
     f.close()
 
@@ -110,10 +176,10 @@ def main():
         user_y = list()
         user_z = list()
 
-        for i in item["m_Positions"]:
-            user_x.append(item["m_Positions"][i]["x"])
-            user_y.append(item["m_Positions"][i]["y"])
-            user_z.append(item["m_Positions"][i]["z"])
+        for i in item:
+            user_x.append(i["x"])
+            user_y.append(i["y"])
+            user_z.append(i["z"])
 
         # calculate the euclidean distance
         for i in range(len(user_x)):
@@ -146,7 +212,7 @@ def main():
         user_mapping[count] = {"user": [user_x, user_y, user_z], "inner": mapping_inner, "outer": mapping_outer}
         count += 1
 
-        # print(user_mapping)
+        print(user_mapping)
 
     # draw the target and user curve
     # plt.subplot(2, 1, 1)
