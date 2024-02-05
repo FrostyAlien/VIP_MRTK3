@@ -1,0 +1,1250 @@
+{
+    "P01": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P02": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P03": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P04": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P05": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P06": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P07": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    },
+    "P09": {
+        "Controller": {
+            "inner": [
+                {
+                    "avg_distance": 1.3023718318420203,
+                    "median_distance": 1.2932328344369655
+                },
+                {
+                    "avg_distance": 1.3359584710332362,
+                    "median_distance": 1.329962498912696
+                },
+                {
+                    "avg_distance": 1.3223995207692003,
+                    "median_distance": 1.3205822215786096
+                },
+                {
+                    "avg_distance": 1.3221965534680746,
+                    "median_distance": 1.32331696296781
+                },
+                {
+                    "avg_distance": 1.3869479439585946,
+                    "median_distance": 1.3892696449254172
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3970724412705473,
+                    "median_distance": 1.4053204107819348
+                },
+                {
+                    "avg_distance": 1.548040819814974,
+                    "median_distance": 1.546059797555334
+                },
+                {
+                    "avg_distance": 1.3955925159280633,
+                    "median_distance": 1.397554615335828
+                },
+                {
+                    "avg_distance": 1.273055143706857,
+                    "median_distance": 1.269760290160337
+                },
+                {
+                    "avg_distance": 1.5096818710473963,
+                    "median_distance": 1.5124865398743277
+                }
+            ]
+        },
+        "Hand": {
+            "inner": [
+                {
+                    "avg_distance": 1.2768188218924734,
+                    "median_distance": 1.2721532639304436
+                },
+                {
+                    "avg_distance": 1.268508890001339,
+                    "median_distance": 1.2631965773143043
+                },
+                {
+                    "avg_distance": 1.3503716969532542,
+                    "median_distance": 1.347932138432125
+                },
+                {
+                    "avg_distance": 1.3844077732237972,
+                    "median_distance": 1.3780809744293077
+                },
+                {
+                    "avg_distance": 1.2609081988241215,
+                    "median_distance": 1.2628006973814139
+                },
+                {
+                    "avg_distance": 1.2531231699702767,
+                    "median_distance": 1.2488352676177428
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3208346083306965,
+                    "median_distance": 1.3225389724349164
+                },
+                {
+                    "avg_distance": 1.4318034999552804,
+                    "median_distance": 1.4353672514086584
+                },
+                {
+                    "avg_distance": 1.461530169786173,
+                    "median_distance": 1.4626763399453275
+                },
+                {
+                    "avg_distance": 1.3925928862929335,
+                    "median_distance": 1.396998238206908
+                },
+                {
+                    "avg_distance": 1.377226490890143,
+                    "median_distance": 1.3786537272704873
+                },
+                {
+                    "avg_distance": 1.3477963968193885,
+                    "median_distance": 1.3460922999647311
+                }
+            ]
+        },
+        "Pen": {
+            "inner": [
+                {
+                    "avg_distance": 1.4214317435582808,
+                    "median_distance": 1.419964507502892
+                },
+                {
+                    "avg_distance": 1.3346630913564277,
+                    "median_distance": 1.3326716236317844
+                },
+                {
+                    "avg_distance": 1.4433305150953901,
+                    "median_distance": 1.4365723371281498
+                },
+                {
+                    "avg_distance": 1.5212747432839253,
+                    "median_distance": 1.5205454708049246
+                },
+                {
+                    "avg_distance": 1.4493972040545395,
+                    "median_distance": 1.4467362386537144
+                },
+                {
+                    "avg_distance": 1.4740835883422898,
+                    "median_distance": 1.4772579686357021
+                }
+            ],
+            "outer": [
+                {
+                    "avg_distance": 1.3530407206943564,
+                    "median_distance": 1.3476348419993474
+                },
+                {
+                    "avg_distance": 1.43341975701181,
+                    "median_distance": 1.4328262630829816
+                },
+                {
+                    "avg_distance": 1.4858340426079129,
+                    "median_distance": 1.4862487613204969
+                },
+                {
+                    "avg_distance": 1.4161585856612389,
+                    "median_distance": 1.4184978872138085
+                },
+                {
+                    "avg_distance": 1.4814725222621805,
+                    "median_distance": 1.4825217641946842
+                },
+                {
+                    "avg_distance": 1.470999336011697,
+                    "median_distance": 1.4727969043234952
+                }
+            ]
+        }
+    }
+}
