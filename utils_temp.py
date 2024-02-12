@@ -12,11 +12,11 @@ def euclidean_distance(target_x: float, target_y: float, target_z: float,
 
 
 def data_loader() -> (list, list, list, list):
-    with open("data/Test3/Target_Inner.json", "r") as f:
+    with open("data/Test1/P01_MR_TrackedLeftController_LeftHand_RightController_Target_Inner.json", "r") as f:
         target_inner = json.load(f)
     f.close()
 
-    with open("data/Test3/Target_Outer.json", "r") as f:
+    with open("data/Test1/P01_MR_TrackedLeftController_LeftHand_RightController_Target_Outer.json", "r") as f:
         target_outer = json.load(f)
     f.close()
 
@@ -39,16 +39,16 @@ def data_loader() -> (list, list, list, list):
     # for i in target_z:
     #     user_z.append(i + np.random.random() * 10)
 
-    for item in target_inner:
+    for item in target_inner["m_Positions"]:
         # print(item)
-        target_inner_x.append(target_inner[item]["x"])
-        target_inner_y.append(target_inner[item]["y"])
-        target_inner_z.append(target_inner[item]["z"])
+        target_inner_x.append(target_inner["m_Positions"][item]["x"])
+        target_inner_y.append(target_inner["m_Positions"][item]["y"])
+        target_inner_z.append(target_inner["m_Positions"][item]["z"])
 
-    for item in target_outer:
-        target_outer_x.append(target_outer[item]["x"])
-        target_outer_y.append(target_outer[item]["y"])
-        target_outer_z.append(target_outer[item]["z"])
+    for item in target_outer["m_Positions"]:
+        target_outer_x.append(target_outer["m_Positions"][item]["x"])
+        target_outer_y.append(target_outer["m_Positions"][item]["y"])
+        target_outer_z.append(target_outer["m_Positions"][item]["z"])
 
     # for item in user:
     #     user_x.append(item["x"])
@@ -65,20 +65,20 @@ def cal_curve_mapping(user_data, target):
     mapping = list()
     distance_list = list()
 
-    for user in user_data.values():
+    for i in range(len(user_data)):
         min_index = 0
         min_point = {}
         min_distance = 100000000
 
         for j in target:
             distance = euclidean_distance(target[j]["x"], target[j]["y"], target[j]["z"],
-                                          user["x"], user["y"], user["z"])
+                                          user_data[i]["x"], user_data[i]["y"], user_data[i]["z"])
             if distance < min_distance:
                 min_distance = distance
                 # min_index = j
                 min_point = target[j]
 
-        mapping.append({"user": user, "target": min_point, "distance": min_distance})
+        mapping.append({"user": user_data[i], "target": min_point, "distance": min_distance})
         distance_list.append(min_distance)
 
     return mapping, np.mean(distance_list), np.median(distance_list)
@@ -161,7 +161,7 @@ def main():
     # print("target_z: ", len(target_z))
     # print("user_z: ", len(user_z))
 
-    with open("data/Test3/Data_Outer.json", "r") as f:
+    with open("data/Test1/Data_Outer.json", "r") as f:
         user = json.load(f)
     f.close()
 
@@ -176,10 +176,11 @@ def main():
         user_y = list()
         user_z = list()
 
-        for i in item.values():
-            user_x.append(i["x"])
-            user_y.append(i["y"])
-            user_z.append(i["z"])
+        for i in item:
+            for j in i:
+                user_x.append(i[j]["x"])
+                user_y.append(i[j]["y"])
+                user_z.append(i[j]["z"])
 
         # calculate the euclidean distance
         for i in range(len(user_x)):
@@ -212,14 +213,14 @@ def main():
         user_mapping[count] = {"user": [user_x, user_y, user_z], "inner": mapping_inner, "outer": mapping_outer}
         count += 1
 
-        # print(user_mapping)
+        print(user_mapping)
 
     # draw the target and user curve
     # plt.subplot(2, 1, 1)
     f1 = plt.figure()
     ax = f1.add_subplot(projection='3d')
-    plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=3.5)
-    plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
+    plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=1.5)
+    plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="orange", linewidth=1.5)
 
     # draw the mapping curve
     for id in user_mapping:
@@ -236,17 +237,17 @@ def main():
             plt.plot([mapping["user"][0], mapping["target"][0]],
                      [mapping["user"][1], mapping["target"][1]],
                      [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=1, color="red", alpha=0.2, label="_" + str(id))
+                     linestyle="-", linewidth=0.5, color="red", alpha=0.2, label="_" + str(id))
 
         for mapping in outer:
             plt.plot([mapping["user"][0], mapping["target"][0]],
                      [mapping["user"][1], mapping["target"][1]],
                      [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=1, color="blue", alpha=0.2, label="_" + str(id))
+                     linestyle="-", linewidth=0.5, color="blue", alpha=0.2, label="_" + str(id))
 
     plt.xlabel("x")
     plt.ylabel("y")
-    ax.set_zlabel("z")
+    # plt.zlabel("z")
     # plt.legend()
 
     ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),

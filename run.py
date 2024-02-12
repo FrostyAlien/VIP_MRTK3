@@ -3,7 +3,7 @@ import json
 
 
 def main():
-    with open("preprocessed_data.json", "r") as f:
+    with open("data/Test3/preprocessed_data.json", "r") as f:
         data = json.load(f)
 
     result = dict()
@@ -28,23 +28,23 @@ def main():
                         }
                     )
 
-    with open("processed_data.json", "w") as f:
+    with open("data/Test3/processed_data.json", "w") as f:
         json.dump(result, f)
 
 
     # temp code
 
-    with open("Target_Inner.json", "w") as f:
-        json.dump(data["P03"]["Pen"]["inner"]["target"], f)
+    with open("data/Test3/Target_Inner.json", "w") as f:
+        json.dump(data["P01"]["Controller"]["inner"]["target"], f)
 
-    with open("Target_Outer.json", "w") as f:
-        json.dump(data["P03"]["Pen"]["outer"]["target"], f)
+    with open("data/Test3/Target_Outer.json", "w") as f:
+        json.dump(data["P01"]["Controller"]["outer"]["target"], f)
 
-    with open("Data_Inner.json", "w") as f:
-        json.dump(data["P03"]["Pen"]["inner"]["data"], f)
+    with open("data/Test3/Data_Inner.json", "w") as f:
+        json.dump(data["P01"]["Controller"]["inner"]["data"], f)
 
-    with open("Data_Outer.json", "w") as f:
-        json.dump(data["P03"]["Pen"]["outer"]["data"], f)
+    with open("data/Test3/Data_Outer.json", "w") as f:
+        json.dump(data["P01"]["Controller"]["outer"]["data"], f)
 
 
 if __name__ == "__main__":
