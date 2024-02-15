@@ -212,7 +212,7 @@ def main():
         user_mapping[count] = {"user": [user_x, user_y, user_z], "inner": mapping_inner, "outer": mapping_outer}
         count += 1
 
-        # print(user_mapping)
+        print(len(user_mapping))
 
     # draw the target and user curve
     # plt.subplot(2, 1, 1)

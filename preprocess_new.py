@@ -76,10 +76,10 @@ for ID in dir_list:
             for i in data:
                 if i["m_id"] == "Outer_Start":
                     print("Outer_Start found")
-                    inner_list.append(i["m_Positions"])
+                    outer_list.append(i["m_Positions"])
                 elif i["m_id"] == "Inner_Start":
                     print("Inner_Start found")
-                    outer_list.append(i["m_Positions"])
+                    inner_list.append(i["m_Positions"])
 
         inner = {
             "target": target_inner,
