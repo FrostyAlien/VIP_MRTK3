@@ -62,13 +62,16 @@ for ID in dir_list:
 
             with open(data_path + '/' + ID + '/' + device + '/' + item, 'r') as f:
                 json_data = json.load(f)
+                data = None
 
                 if 'Target_Inner' in item:
                     print("Target_Inner found")
                     target_inner = json_data["m_Positions"]
+                    continue
                 elif 'Target_Outer' in item:
                     print("Target_Outer found")
                     target_outer = json_data["m_Positions"]
+                    continue
                 else:
                     print("Data found")
                     data = json_data

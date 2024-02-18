@@ -81,7 +81,7 @@ def cal_curve_mapping(user_data, target):
         mapping.append({"user": user, "target": min_point, "distance": min_distance})
         distance_list.append(min_distance)
 
-    return mapping, np.mean(distance_list), np.median(distance_list)
+    return mapping
 
 
 # def draw_curve(user_mapping):
@@ -252,7 +252,7 @@ def main():
     ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),
               ncol=2, borderaxespad=0)
     f1.subplots_adjust(right=0.55)
-    f1.suptitle('Right-click to hide all\nMiddle-click to show all\nPress r to toggle inner\nPress b to toggle outer',
+    f1.suptitle('Right-click to hide all\nMiddle-click to show all\nPress i to toggle inner\nPress o to toggle outer',
                 va='top', size='large')
 
     leg = interactive_legend()
@@ -392,8 +392,8 @@ if __name__ == "__main__":
 
 
     # Connect the switch functions to key presses
-    plt.connect('key_press_event', lambda event: switch_red() if event.key == 'r' else None)
-    plt.connect('key_press_event', lambda event: switch_blue() if event.key == 'b' else None)
+    plt.connect('key_press_event', lambda event: switch_red() if event.key == 'i' else None)
+    plt.connect('key_press_event', lambda event: switch_blue() if event.key == 'o' else None)
 
     plt.show()
 
