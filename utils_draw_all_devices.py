@@ -4,11 +4,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+USERID = "P09"
+mode = "outer"
 
 # Euclidean distance (3d)
 def euclidean_distance(target_x: float, target_y: float, target_z: float,
                        user_x: float, user_y: float, user_z: float) -> float:
     return np.sqrt((target_x - user_x) ** 2 + (target_y - user_y) ** 2 + (target_z - user_z) ** 2)
+
 
 def data_loader() -> (list, list, list, list):
     with open("data/Target_Inner.json", "r") as f:
@@ -82,7 +85,6 @@ def cal_curve_mapping(user_data, target):
 
     return mapping
 
-
 def main():
     target_x, target_y, target_z, \
         target_outer_x, target_outer_y, target_outer_z, = data_loader()
@@ -94,89 +96,70 @@ def main():
     # print("target_z: ", len(target_z))
     # print("user_z: ", len(user_z))
 
-    with open("data/Test_P08/P08_Hand_outer.json", "r") as f:
-        user = json.load(f)
+    with open(f"data/Test_{USERID}/result.json", "r") as f:
+        users = json.load(f)
     f.close()
 
-    user_mapping = dict()
+    controller_mapping = users[USERID]["Controller"][mode]
+    hand_mapping = users[USERID]["Hand"][mode]
+    pen_mapping = users[USERID]["Pen"][mode]
 
-    count = 0
-    for item in user:
-        mapping_inner = list()
-        mapping_outer = list()
-
-        user_x = list()
-        user_y = list()
-        user_z = list()
-
-        for i in item.values():
-            user_x.append(i["x"])
-            user_y.append(i["y"])
-            user_z.append(i["z"])
-
-        # calculate the euclidean distance
-        for i in range(len(user_x)):
-            min_index = 0
-            min_distance = 100000000
-
-            min_outer_index = 0
-            min_outer_distance = 100000000
-            for j in range(len(target_x)):
-                distance = euclidean_distance(target_x[j], target_y[j], target_z[j], user_x[i], user_y[i], user_z[i])
-                outer_distance = euclidean_distance(target_outer_x[j], target_outer_y[j], target_outer_z[j],
-                                                    user_x[i], user_y[i], user_z[i])
-                if distance < min_distance:
-                    min_distance = distance
-                    min_index = j
-
-                if outer_distance < min_outer_distance:
-                    min_outer_distance = outer_distance
-                    min_outer_index = j
-
-            mapping_inner.append({"user": (user_x[i], user_y[i], user_z[i]),
-                                  "target": (target_x[min_index], target_y[min_index], target_z[min_index]),
-                                  "distance": min_distance},
-                                 )
-            mapping_outer.append({"user": (user_x[i], user_y[i], user_z[i]),
-                                  "target": (target_outer_x[min_outer_index], target_outer_y[min_outer_index],
-                                             target_outer_z[min_outer_index]),
-                                  "distance": min_outer_distance})
-
-        # user_mapping[item["m_id"]] = {"user": [user_x, user_y, user_z], "inner": mapping_inner, "outer": mapping_outer}
-        user_mapping[count] = {"user": [user_x, user_y, user_z], "inner": mapping_inner, "outer": mapping_outer}
-        count += 1
-
-        print(len(user_mapping))
 
     # draw the target and user curve
     # plt.subplot(2, 1, 1)
     f1 = plt.figure()
     ax = f1.add_subplot(projection='3d')
-    plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=3.5)
-    plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
 
-    # draw the mapping curve
-    for id in user_mapping:
+    if mode == "inner":
+        plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=3.5)
+    else:
+        plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
 
-        # if id != 0:
-        #     continue
+    # plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
 
-        plt.plot(user_mapping[id]["user"][0], user_mapping[id]["user"][1], user_mapping[id]["user"][2], label=id)
+    # draw the user curve
+    count = 0
+    for trial in controller_mapping:
+        controller_user_curve_x = list()
+        controller_user_curve_y = list()
+        controller_user_curve_z = list()
+        for item in trial["mapping"]:
+            controller_user_curve_x.append(item["user"]["x"])
+            controller_user_curve_y.append(item["user"]["y"])
+            controller_user_curve_z.append(item["user"]["z"])
+        plt.plot(controller_user_curve_x, controller_user_curve_y, controller_user_curve_z, label=f"controller_{count}", color="red", linewidth=1.0)
+        count += 1
 
-        inner = user_mapping[id]["inner"]
-        outer = user_mapping[id]["outer"]
+    count = 0
+    for trial in hand_mapping:
+        hand_user_curve_x = list()
+        hand_user_curve_y = list()
+        hand_user_curve_z = list()
+        for item in trial["mapping"]:
+            hand_user_curve_x.append(item["user"]["x"])
+            hand_user_curve_y.append(item["user"]["y"])
+            hand_user_curve_z.append(item["user"]["z"])
+        plt.plot(hand_user_curve_x, hand_user_curve_y, hand_user_curve_z, label=f"hand_{count}", color="green", linewidth=1.0)
 
-        for mapping in inner:
-            plt.plot([mapping["user"][0], mapping["target"][0]],
-                     [mapping["user"][1], mapping["target"][1]],
-                     [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=1, color="red", alpha=0.2, label="_" + str(id))
 
-        for mapping in outer:
-            plt.plot([mapping["user"][0], mapping["target"][0]],
-                     [mapping["user"][1], mapping["target"][1]],
-                     [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=1, color="blue", alpha=0.2, label="_" + str(id))
+    count = 0
+    for trial in pen_mapping:
+        pen_user_curve_x = list()
+        pen_user_curve_y = list()
+        pen_user_curve_z = list()
+        for item in trial["mapping"]:
+            pen_user_curve_x.append(item["user"]["x"])
+            pen_user_curve_y.append(item["user"]["y"])
+            pen_user_curve_z.append(item["user"]["z"])
+        plt.plot(pen_user_curve_x, pen_user_curve_y, pen_user_curve_z, label=f"pen_{count}", color="royalblue", linewidth=1.0)
+        count += 1
+
+
+        # for mapping in outer:
+        #     plt.plot([mapping["user"][0], mapping["target"][0]],
+        #              [mapping["user"][1], mapping["target"][1]],
+        #              [mapping["user"][2], mapping["target"][2]],
+        #              linestyle="-", linewidth=1, color="blue", alpha=0.2, label="_" + str(id))
 
     plt.xlabel("x")
     plt.ylabel("y")

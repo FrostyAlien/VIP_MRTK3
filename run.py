@@ -3,8 +3,9 @@ import numpy as np
 import utils
 import json
 
-OUTLIER_THRESHOLD = 0.04
-
+#OUTLIER_THRESHOLD = 0.04
+OUTLIER_THRESHOLD = 999
+data_path = 'data/Test_P09'
 
 def get_point_key(data, point):
     for i in data:
@@ -20,6 +21,7 @@ def handle_mapping(user, device, item, user_data_index, user_data_item, target_d
         if map_item["distance"] > OUTLIER_THRESHOLD:
             print(f"[{user}][{device}][{item}][iter: {user_data_index}]Outlier found: {map_item['distance']}")
             user_data_item.pop(get_point_key(user_data_item, map_item["user"]))
+            # do not add this mapping to cleaned_mapping
             continue
 
         duplicate_found = next((j for j in cleaned_mapping if j["target"] == map_item["target"]), None)
@@ -27,6 +29,7 @@ def handle_mapping(user, device, item, user_data_index, user_data_item, target_d
             if map_item["distance"] >= duplicate_found["distance"]:
                 print(f"[{user}][{device}][{item}][iter: {user_data_index}]Removed duplicate mapping: {map_index}")
                 user_data_item.pop(get_point_key(user_data_item, map_item["user"]))
+                # do not add this mapping to cleaned_mapping
                 continue
             else:
                 print(f"[{user}][{device}][{item}][iter: {user_data_index}]Update mapping: from {duplicate_found} to {map_item}")
@@ -49,7 +52,7 @@ def handle_mapping(user, device, item, user_data_index, user_data_item, target_d
 
 
 def main():
-    with open("data/Test3/preprocessed_data.json", "r") as f:
+    with open(f"{data_path}/preprocessed_data.json", "r") as f:
         data = json.load(f)
 
     result = dict()
@@ -65,17 +68,26 @@ def main():
                     cleaned_user_data_item = handle_mapping(user, device, item, user_data_index, user_data_item, device_data[item]["target"], result)
                     data[user][device][item]["data"][user_data_index] = cleaned_user_data_item  # update data with cleaned user_data_item
 
-    with open("data/Test3/Target_Inner.json", "w") as f:
-        json.dump(data["P01"]["Controller"]["inner"]["target"], f)
+                with open(f"{data_path}/{user}_{device}_{item}.json", "w") as f:
+                    json.dump(data[user][device][item]["data"], f)
+                with open(f"{data_path}/{user}_{device}_{item}_target.json", "w") as f:
+                    json.dump(device_data[item]["target"], f)
 
-    with open("data/Test3/Target_Outer.json", "w") as f:
-        json.dump(data["P01"]["Controller"]["outer"]["target"], f)
+    with open(f"{data_path}/result.json", "w") as f:
+        json.dump(result, f)
 
-    with open("data/Test3/Data_Inner.json", "w") as f:
-        json.dump(data["P01"]["Controller"]["inner"]["data"], f)
 
-    with open("data/Test3/Data_Outer.json", "w") as f:
-        json.dump(data["P01"]["Controller"]["outer"]["data"], f)
+    # with open("data/Test_P08/Target_Inner.json", "w") as f:
+    #     json.dump(data["P02"]["Controller"]["inner"]["target"], f)
+    #
+    # with open("data/Test_P08/Target_Outer.json", "w") as f:
+    #     json.dump(data["P02"]["Controller"]["outer"]["target"], f)
+    #
+    # with open("data/Test_P08/Data_Inner.json", "w") as f:
+    #     json.dump(data["P02"]["Controller"]["inner"]["data"], f)
+    #
+    # with open("data/Test_P08/Data_Outer.json", "w") as f:
+    #     json.dump(data["P02"]["Controller"]["outer"]["data"], f)
 
 
 if __name__ == "__main__":
