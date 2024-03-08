@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 USERID = "P09"
-mode = "outer"
+mode = "inner"
+
 
 # Euclidean distance (3d)
 def euclidean_distance(target_x: float, target_y: float, target_z: float,
@@ -30,17 +31,6 @@ def data_loader() -> (list, list, list, list):
     target_outer_y = list()
     target_outer_z = list()
 
-    # user_x = list()
-    # user_y = list()
-    # user_z = list()
-
-    # simulate the 3d data
-    # target_z = list(sorted(np.random.normal(0, 50, len(target))))
-    # user_z = list()
-
-    # for i in target_z:
-    #     user_z.append(i + np.random.random() * 10)
-
     for item in target_inner:
         # print(item)
         target_inner_x.append(target_inner[item]["x"])
@@ -52,15 +42,9 @@ def data_loader() -> (list, list, list, list):
         target_outer_y.append(target_outer[item]["y"])
         target_outer_z.append(target_outer[item]["z"])
 
-    # for item in user:
-    #     user_x.append(item["x"])
-    #     user_y.append(item["y"])
-    #     user_z.append(item["z"])
-
     return target_inner_x, target_inner_y, target_inner_z, \
         target_outer_x, target_outer_y, \
         target_outer_z
-    # ,user_x, user_y, user_z
 
 
 def cal_curve_mapping(user_data, target):
@@ -85,16 +69,10 @@ def cal_curve_mapping(user_data, target):
 
     return mapping
 
+
 def main():
     target_x, target_y, target_z, \
         target_outer_x, target_outer_y, target_outer_z, = data_loader()
-
-    # print("target_x: ", len(target_x))
-    # print("target_y: ", len(target_y))
-    # # print("user_x: ", len(user_x))
-    # # print("user_y: ", len(user_y))
-    # print("target_z: ", len(target_z))
-    # print("user_z: ", len(user_z))
 
     with open(f"data/Test_{USERID}/result.json", "r") as f:
         users = json.load(f)
@@ -103,7 +81,6 @@ def main():
     controller_mapping = users[USERID]["Controller"][mode]
     hand_mapping = users[USERID]["Hand"][mode]
     pen_mapping = users[USERID]["Pen"][mode]
-
 
     # draw the target and user curve
     # plt.subplot(2, 1, 1)
@@ -127,7 +104,8 @@ def main():
             controller_user_curve_x.append(item["user"]["x"])
             controller_user_curve_y.append(item["user"]["y"])
             controller_user_curve_z.append(item["user"]["z"])
-        plt.plot(controller_user_curve_x, controller_user_curve_y, controller_user_curve_z, label=f"controller_{count}", color="red", linewidth=1.0)
+        plt.plot(controller_user_curve_x, controller_user_curve_y, controller_user_curve_z, label=f"controller_{count}",
+                 color="red", linewidth=1.0)
         count += 1
 
     count = 0
@@ -139,8 +117,8 @@ def main():
             hand_user_curve_x.append(item["user"]["x"])
             hand_user_curve_y.append(item["user"]["y"])
             hand_user_curve_z.append(item["user"]["z"])
-        plt.plot(hand_user_curve_x, hand_user_curve_y, hand_user_curve_z, label=f"hand_{count}", color="green", linewidth=1.0)
-
+        plt.plot(hand_user_curve_x, hand_user_curve_y, hand_user_curve_z, label=f"hand_{count}", color="green",
+                 linewidth=1.0)
 
     count = 0
     for trial in pen_mapping:
@@ -151,15 +129,9 @@ def main():
             pen_user_curve_x.append(item["user"]["x"])
             pen_user_curve_y.append(item["user"]["y"])
             pen_user_curve_z.append(item["user"]["z"])
-        plt.plot(pen_user_curve_x, pen_user_curve_y, pen_user_curve_z, label=f"pen_{count}", color="royalblue", linewidth=1.0)
+        plt.plot(pen_user_curve_x, pen_user_curve_y, pen_user_curve_z, label=f"pen_{count}", color="royalblue",
+                 linewidth=1.0)
         count += 1
-
-
-        # for mapping in outer:
-        #     plt.plot([mapping["user"][0], mapping["target"][0]],
-        #              [mapping["user"][1], mapping["target"][1]],
-        #              [mapping["user"][2], mapping["target"][2]],
-        #              linestyle="-", linewidth=1, color="blue", alpha=0.2, label="_" + str(id))
 
     plt.xlabel("x")
     plt.ylabel("y")

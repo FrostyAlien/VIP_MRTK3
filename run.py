@@ -5,7 +5,7 @@ import json
 
 #OUTLIER_THRESHOLD = 0.04
 OUTLIER_THRESHOLD = 999
-data_path = 'data/Test_P09'
+data_path = 'data/VR_3-9'
 
 def get_point_key(data, point):
     for i in data:
@@ -75,6 +75,20 @@ def main():
 
     with open(f"{data_path}/result.json", "w") as f:
         json.dump(result, f)
+
+    # Create a new result without 'mapping' attribute
+    result_without_mapping = dict()
+    for user, user_data in result.items():
+        result_without_mapping[user] = dict()
+        for device, device_data in user_data.items():
+            result_without_mapping[user][device] = {
+                "inner": [i for i in device_data["inner"] if "mapping" not in i],
+                "outer": [i for i in device_data["outer"] if "mapping" not in i]
+            }
+
+    # Export the new result
+    with open(f"{data_path}/result_without_mapping.json", "w") as f:
+        json.dump(result_without_mapping, f)
 
 
     # with open("data/Test_P08/Target_Inner.json", "w") as f:
