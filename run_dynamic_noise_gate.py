@@ -9,7 +9,7 @@ DEACTIVATE_THRESHOLD = 0.025
 
 #OUTLIER_THRESHOLD = 999
 
-data_path = 'data/VR_3-9'
+data_path = 'data/AR_3-12'
 
 def get_point_key(data, point):
     for i in data:
