@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-MODE = "VR"
-result_path = f"data/VR_3-9/result.json"
+MODE = "AR"
+result_path = f"data/AR_3-12/result.json"
 
 
 
