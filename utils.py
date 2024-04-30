@@ -4,6 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+SURFACE = "inner"
+FILE = "data/AR/P09_Hand_inner.json"
+OUTPUT_FILE = "figure/P09_ARHand_inner.png"
+
 
 # Euclidean distance (3d)
 def euclidean_distance(target_x: float, target_y: float, target_z: float,
@@ -94,7 +98,7 @@ def main():
     # print("target_z: ", len(target_z))
     # print("user_z: ", len(user_z))
 
-    with open("data/Test_P08/P08_Hand_outer.json", "r") as f:
+    with open(FILE, "r") as f:
         user = json.load(f)
     f.close()
 
@@ -150,10 +154,16 @@ def main():
 
     # draw the target and user curve
     # plt.subplot(2, 1, 1)
-    f1 = plt.figure()
+    f1 = plt.figure(figsize=(12,8))
+
+    # set size of the figure
     ax = f1.add_subplot(projection='3d')
-    plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=3.5)
-    plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
+
+    if SURFACE == "inner":
+        plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=3.5)
+
+    if SURFACE == "outer":
+        plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
 
     # draw the mapping curve
     for id in user_mapping:
@@ -166,28 +176,34 @@ def main():
         inner = user_mapping[id]["inner"]
         outer = user_mapping[id]["outer"]
 
-        for mapping in inner:
-            plt.plot([mapping["user"][0], mapping["target"][0]],
-                     [mapping["user"][1], mapping["target"][1]],
-                     [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=1, color="red", alpha=0.2, label="_" + str(id))
+        if SURFACE == "inner":
+            for mapping in inner:
+                plt.plot([mapping["user"][0], mapping["target"][0]],
+                         [mapping["user"][1], mapping["target"][1]],
+                         [mapping["user"][2], mapping["target"][2]],
+                         linestyle="-", linewidth=1, color="red", alpha=0.2, label="_" + str(id))
 
-        for mapping in outer:
-            plt.plot([mapping["user"][0], mapping["target"][0]],
-                     [mapping["user"][1], mapping["target"][1]],
-                     [mapping["user"][2], mapping["target"][2]],
-                     linestyle="-", linewidth=1, color="blue", alpha=0.2, label="_" + str(id))
+        if SURFACE == "outer":
+            for mapping in outer:
+                plt.plot([mapping["user"][0], mapping["target"][0]],
+                         [mapping["user"][1], mapping["target"][1]],
+                         [mapping["user"][2], mapping["target"][2]],
+                         linestyle="-", linewidth=1, color="blue", alpha=0.2, label="_" + str(id))
 
     plt.xlabel("x")
     plt.ylabel("y")
     ax.set_zlabel("z")
-    # plt.legend()
+    plt.tight_layout()
 
-    ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),
-              ncol=2, borderaxespad=0)
-    f1.subplots_adjust(right=0.55)
-    f1.suptitle('Right-click to hide all\nMiddle-click to show all\nPress i to toggle inner\nPress o to toggle outer',
-                va='top', size='large')
+    plt.legend()
+
+    plt.savefig(OUTPUT_FILE, dpi=300)
+
+    # ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),
+    #           ncol=2, borderaxespad=0)
+    # f1.subplots_adjust(right=0.55)
+    # f1.suptitle('Right-click to hide all\nMiddle-click to show all\nPress i to toggle inner\nPress o to toggle outer',
+    #             va='top', size='large')
 
     leg = interactive_legend()
 

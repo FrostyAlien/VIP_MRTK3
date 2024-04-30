@@ -5,7 +5,7 @@ import json
 
 #OUTLIER_THRESHOLD = 0.04
 OUTLIER_THRESHOLD = 999
-data_path = 'data/VR_3-9'
+data_path = 'data/MR'
 
 def get_point_key(data, point):
     for i in data:

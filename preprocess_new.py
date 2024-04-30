@@ -2,7 +2,7 @@ import os
 import json
 import numpy as np
 
-data_path = 'data/AR_3-12'
+data_path = 'data/MR'
 dir_list = os.listdir(data_path)
 
 

@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-MODE = "AR"
-result_path = f"data/AR_3-12/result.json"
+MODE = "MR"
+result_path = f"data/{MODE}/result.json"
 
 
 
@@ -87,12 +87,12 @@ def main():
         users = all_users[USERID]
 
         for device in ['Controller', 'Hand', 'Pen']:
-            for mode in ['inner', 'outer']:
+            for surface in ['inner', 'outer']:
                 f1 = plt.figure(figsize=(10, 8))  # adjust the figure size
                 ax = f1.add_subplot(projection='3d')
-                mapping = users[device][mode]
+                mapping = users[device][surface]
 
-                if mode == "inner":
+                if surface == "inner":
                     plt.plot(target_x, target_y, target_z, label="target_inner", color="cyan", linewidth=3.5)
                 else:
                     plt.plot(target_outer_x, target_outer_y, target_outer_z, label="target_outer", color="black", linewidth=3.5)
@@ -118,13 +118,13 @@ def main():
                 ax.legend(loc='upper left', bbox_to_anchor=(0.7, 1),
                           ncol=2, borderaxespad=0)
                 f1.subplots_adjust(left=0.1, bottom=0.033, right=0.783, top=0.88)
-                f1.suptitle(f'{USERID}_{device}_{mode}',
+                f1.suptitle(f'{USERID}_{device}_{surface}',
                             va='top', size='large')
 
                 leg = interactive_legend()
 
                 # Save the figure to the 'figure' directory
-                plt.savefig(f'figure/{MODE}/{USERID}_{device}_{mode}.png', dpi=300)
+                plt.savefig(f'figure/{MODE}/{USERID}_{device}_{surface}.png', dpi=300)
                 plt.close(f1)
 
 
