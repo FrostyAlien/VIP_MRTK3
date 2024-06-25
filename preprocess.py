@@ -2,7 +2,7 @@ import os
 import json
 import numpy as np
 
-data_path = 'data/Accuracy'
+data_path = 'data/MR'
 dir_list = os.listdir(data_path)
 
 
@@ -45,6 +45,9 @@ device_name = ""
 all_data = dict()
 
 for ID in dir_list:
+    if os.path.isfile(data_path + '/' + ID):
+        continue
+
     p_id = ID.split('_')[0]
     print(p_id)
     p_data = dict()
@@ -52,46 +55,56 @@ for ID in dir_list:
     for device in os.listdir(data_path + '/' + ID):
         device_name = device.split('_')[0]
         print(device_name)
+        inner_list = []
+        outer_list = []
+
         for item in os.listdir(data_path + '/' + ID + '/' + device):
-            print(item)
+
             with open(data_path + '/' + ID + '/' + device + '/' + item, 'r') as f:
                 json_data = json.load(f)
+                data = None
 
                 if 'Target_Inner' in item:
                     print("Target_Inner found")
-                    target_inner = json_data
+                    target_inner = json_data["m_Positions"]
+                    continue
                 elif 'Target_Outer' in item:
                     print("Target_Outer found")
-                    target_outer = json_data
+                    target_outer = json_data["m_Positions"]
+                    continue
                 else:
                     print("Data found")
                     data = json_data
 
-        # preprocess
-        data = data[0]["m_Positions"]
-        # print(data)
-        target_inner = target_inner["m_Positions"]
-        target_outer = target_outer["m_Positions"]
-        data_inner, data_outer = split_inner_outer(data)
+            for i in data:
+                if i["m_id"] == "Outer_Start":
+                    print("Outer_Start found")
+                    outer_list.append(i["m_Positions"])
+                elif i["m_id"] == "Inner_Start":
+                    print("Inner_Start found")
+                    inner_list.append(i["m_Positions"])
 
         inner = {
             "target": target_inner,
-            "data": data_inner
+            "data": inner_list
         }
 
         outer = {
             "target": target_outer,
-            "data": data_outer
+            "data": outer_list
         }
 
-        p_data[device_name] = {
+        p_data = {
             "inner": inner,
             "outer": outer
         }
 
-    all_data[p_id] = p_data
+        if p_id not in all_data:
+            all_data[p_id] = dict()
+
+        all_data[p_id][device_name] = p_data
 
 # print(all_data)
 
-with open('preprocessed_data.json', 'w') as f:
+with open(f'{data_path}/preprocessed_data.json', 'w') as f:
     json.dump(all_data, f)
