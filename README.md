@@ -29,6 +29,9 @@
 5. Run `run_dynamic_noise_gate.py` to generate processed_data.json (result) using the dynamic noise gate algorithm
 6. Use `sEMG_Processing_new.ipynb` to process and analyze the EMG data
 
+## EMG Data Analysis Flowchart
+![EMG_Flowchart](figure/EMG_Flowchart.png)
+
 ## Disclaimer
 This repo is intended for peer-review and research purpose only. 
 
